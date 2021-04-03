@@ -1,6 +1,11 @@
-kafkaRawEnergyEventTopicName: tracking.energy.rawevent
+kafkaRawDeviceEventTopicName: tracking.energy.rawevent
+kafkaSlowRawDeviceEventTopicName: tracking.energy.rawevent.slow
+kafkaInvalidTopicName: tracking.energy.invalid
+kafkaDeviceEventTopicName: tracking.energy.deviceevent
 kafkaBootstrapServer: docker-desktop:32234
 kafkaSchemaRegistryUrl: http://schema-registry.cluster.local
+
+bigMessageSize: 200000
 
 database:
   driverClass: org.postgresql.Driver

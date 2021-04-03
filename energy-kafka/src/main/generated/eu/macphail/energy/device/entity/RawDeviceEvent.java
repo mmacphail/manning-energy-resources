@@ -3,12 +3,12 @@
  * 
  * DO NOT EDIT DIRECTLY
  */
-package eu.macphail.energy;  
+package eu.macphail.energy.device.entity;  
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
-public class RawEnergyEvent extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 4429395659875759399L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"RawEnergyEvent\",\"namespace\":\"eu.macphail.energy\",\"fields\":[{\"name\":\"receivedTimestamp\",\"type\":\"long\",\"logicalType\":\"timestamp-millis\"},{\"name\":\"regionId\",\"type\":\"string\"},{\"name\":\"payload\",\"type\":\"string\"}]}");
+public class RawDeviceEvent extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = -7774283508040267731L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"RawDeviceEvent\",\"namespace\":\"eu.macphail.energy.device.entity\",\"fields\":[{\"name\":\"receivedTimestamp\",\"type\":\"long\",\"logicalType\":\"timestamp-millis\"},{\"name\":\"regionId\",\"type\":\"string\"},{\"name\":\"payload\",\"type\":\"string\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   @Deprecated public long receivedTimestamp;
   @Deprecated public java.lang.CharSequence regionId;
@@ -19,12 +19,12 @@ public class RawEnergyEvent extends org.apache.avro.specific.SpecificRecordBase 
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>. 
    */
-  public RawEnergyEvent() {}
+  public RawDeviceEvent() {}
 
   /**
    * All-args constructor.
    */
-  public RawEnergyEvent(java.lang.Long receivedTimestamp, java.lang.CharSequence regionId, java.lang.CharSequence payload) {
+  public RawDeviceEvent(java.lang.Long receivedTimestamp, java.lang.CharSequence regionId, java.lang.CharSequence payload) {
     this.receivedTimestamp = receivedTimestamp;
     this.regionId = regionId;
     this.payload = payload;
@@ -97,36 +97,36 @@ public class RawEnergyEvent extends org.apache.avro.specific.SpecificRecordBase 
   }
 
   /**
-   * Creates a new RawEnergyEvent RecordBuilder.
-   * @return A new RawEnergyEvent RecordBuilder
+   * Creates a new RawDeviceEvent RecordBuilder.
+   * @return A new RawDeviceEvent RecordBuilder
    */
-  public static eu.macphail.energy.RawEnergyEvent.Builder newBuilder() {
-    return new eu.macphail.energy.RawEnergyEvent.Builder();
+  public static eu.macphail.energy.device.entity.RawDeviceEvent.Builder newBuilder() {
+    return new eu.macphail.energy.device.entity.RawDeviceEvent.Builder();
   }
   
   /**
-   * Creates a new RawEnergyEvent RecordBuilder by copying an existing Builder.
+   * Creates a new RawDeviceEvent RecordBuilder by copying an existing Builder.
    * @param other The existing builder to copy.
-   * @return A new RawEnergyEvent RecordBuilder
+   * @return A new RawDeviceEvent RecordBuilder
    */
-  public static eu.macphail.energy.RawEnergyEvent.Builder newBuilder(eu.macphail.energy.RawEnergyEvent.Builder other) {
-    return new eu.macphail.energy.RawEnergyEvent.Builder(other);
+  public static eu.macphail.energy.device.entity.RawDeviceEvent.Builder newBuilder(eu.macphail.energy.device.entity.RawDeviceEvent.Builder other) {
+    return new eu.macphail.energy.device.entity.RawDeviceEvent.Builder(other);
   }
   
   /**
-   * Creates a new RawEnergyEvent RecordBuilder by copying an existing RawEnergyEvent instance.
+   * Creates a new RawDeviceEvent RecordBuilder by copying an existing RawDeviceEvent instance.
    * @param other The existing instance to copy.
-   * @return A new RawEnergyEvent RecordBuilder
+   * @return A new RawDeviceEvent RecordBuilder
    */
-  public static eu.macphail.energy.RawEnergyEvent.Builder newBuilder(eu.macphail.energy.RawEnergyEvent other) {
-    return new eu.macphail.energy.RawEnergyEvent.Builder(other);
+  public static eu.macphail.energy.device.entity.RawDeviceEvent.Builder newBuilder(eu.macphail.energy.device.entity.RawDeviceEvent other) {
+    return new eu.macphail.energy.device.entity.RawDeviceEvent.Builder(other);
   }
   
   /**
-   * RecordBuilder for RawEnergyEvent instances.
+   * RecordBuilder for RawDeviceEvent instances.
    */
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<RawEnergyEvent>
-    implements org.apache.avro.data.RecordBuilder<RawEnergyEvent> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<RawDeviceEvent>
+    implements org.apache.avro.data.RecordBuilder<RawDeviceEvent> {
 
     private long receivedTimestamp;
     private java.lang.CharSequence regionId;
@@ -134,14 +134,14 @@ public class RawEnergyEvent extends org.apache.avro.specific.SpecificRecordBase 
 
     /** Creates a new Builder */
     private Builder() {
-      super(eu.macphail.energy.RawEnergyEvent.SCHEMA$);
+      super(eu.macphail.energy.device.entity.RawDeviceEvent.SCHEMA$);
     }
     
     /**
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(eu.macphail.energy.RawEnergyEvent.Builder other) {
+    private Builder(eu.macphail.energy.device.entity.RawDeviceEvent.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.receivedTimestamp)) {
         this.receivedTimestamp = data().deepCopy(fields()[0].schema(), other.receivedTimestamp);
@@ -158,11 +158,11 @@ public class RawEnergyEvent extends org.apache.avro.specific.SpecificRecordBase 
     }
     
     /**
-     * Creates a Builder by copying an existing RawEnergyEvent instance
+     * Creates a Builder by copying an existing RawDeviceEvent instance
      * @param other The existing instance to copy.
      */
-    private Builder(eu.macphail.energy.RawEnergyEvent other) {
-            super(eu.macphail.energy.RawEnergyEvent.SCHEMA$);
+    private Builder(eu.macphail.energy.device.entity.RawDeviceEvent other) {
+            super(eu.macphail.energy.device.entity.RawDeviceEvent.SCHEMA$);
       if (isValidValue(fields()[0], other.receivedTimestamp)) {
         this.receivedTimestamp = data().deepCopy(fields()[0].schema(), other.receivedTimestamp);
         fieldSetFlags()[0] = true;
@@ -190,7 +190,7 @@ public class RawEnergyEvent extends org.apache.avro.specific.SpecificRecordBase 
       * @param value The value of 'receivedTimestamp'.
       * @return This builder.
       */
-    public eu.macphail.energy.RawEnergyEvent.Builder setReceivedTimestamp(long value) {
+    public eu.macphail.energy.device.entity.RawDeviceEvent.Builder setReceivedTimestamp(long value) {
       validate(fields()[0], value);
       this.receivedTimestamp = value;
       fieldSetFlags()[0] = true;
@@ -210,7 +210,7 @@ public class RawEnergyEvent extends org.apache.avro.specific.SpecificRecordBase 
       * Clears the value of the 'receivedTimestamp' field.
       * @return This builder.
       */
-    public eu.macphail.energy.RawEnergyEvent.Builder clearReceivedTimestamp() {
+    public eu.macphail.energy.device.entity.RawDeviceEvent.Builder clearReceivedTimestamp() {
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -228,7 +228,7 @@ public class RawEnergyEvent extends org.apache.avro.specific.SpecificRecordBase 
       * @param value The value of 'regionId'.
       * @return This builder.
       */
-    public eu.macphail.energy.RawEnergyEvent.Builder setRegionId(java.lang.CharSequence value) {
+    public eu.macphail.energy.device.entity.RawDeviceEvent.Builder setRegionId(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.regionId = value;
       fieldSetFlags()[1] = true;
@@ -248,7 +248,7 @@ public class RawEnergyEvent extends org.apache.avro.specific.SpecificRecordBase 
       * Clears the value of the 'regionId' field.
       * @return This builder.
       */
-    public eu.macphail.energy.RawEnergyEvent.Builder clearRegionId() {
+    public eu.macphail.energy.device.entity.RawDeviceEvent.Builder clearRegionId() {
       regionId = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -267,7 +267,7 @@ public class RawEnergyEvent extends org.apache.avro.specific.SpecificRecordBase 
       * @param value The value of 'payload'.
       * @return This builder.
       */
-    public eu.macphail.energy.RawEnergyEvent.Builder setPayload(java.lang.CharSequence value) {
+    public eu.macphail.energy.device.entity.RawDeviceEvent.Builder setPayload(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.payload = value;
       fieldSetFlags()[2] = true;
@@ -287,16 +287,16 @@ public class RawEnergyEvent extends org.apache.avro.specific.SpecificRecordBase 
       * Clears the value of the 'payload' field.
       * @return This builder.
       */
-    public eu.macphail.energy.RawEnergyEvent.Builder clearPayload() {
+    public eu.macphail.energy.device.entity.RawDeviceEvent.Builder clearPayload() {
       payload = null;
       fieldSetFlags()[2] = false;
       return this;
     }
 
     @Override
-    public RawEnergyEvent build() {
+    public RawDeviceEvent build() {
       try {
-        RawEnergyEvent record = new RawEnergyEvent();
+        RawDeviceEvent record = new RawDeviceEvent();
         record.receivedTimestamp = fieldSetFlags()[0] ? this.receivedTimestamp : (java.lang.Long) defaultValue(fields()[0]);
         record.regionId = fieldSetFlags()[1] ? this.regionId : (java.lang.CharSequence) defaultValue(fields()[1]);
         record.payload = fieldSetFlags()[2] ? this.payload : (java.lang.CharSequence) defaultValue(fields()[2]);

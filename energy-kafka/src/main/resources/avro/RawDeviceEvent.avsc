@@ -1,0 +1,10 @@
+{
+  "name": "RawDeviceEvent",
+  "namespace": "eu.macphail.energy.device.entity",
+  "type": "record",
+  "fields": [
+    { "name":  "receivedTimestamp", "type": "long", "logicalType": "timestamp-millis" },
+    { "name":  "regionId", "type": "string" },
+    { "name":  "payload", "type":  "string" }
+  ]
+}

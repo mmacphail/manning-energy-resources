@@ -1,37 +1,38 @@
 package eu.macphail.energy;
 
-import eu.macphail.energy.device.DeviceDAO;
-import eu.macphail.energy.device.LoadDeviceEventsCommand;
-import eu.macphail.energy.device.DeviceController;
-import eu.macphail.energy.device.EnergyEventStreamingService;
+import eu.macphail.energy.device.boundary.*;
+import eu.macphail.energy.device.control.DeviceDAO;
+import eu.macphail.energy.device.control.AppConfiguration;
+import eu.macphail.energy.device.control.DeviceEventKafkaProducer;
 import io.dropwizard.Application;
 import io.dropwizard.jdbi3.JdbiFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.jdbi.v3.core.Jdbi;
 
-public class EnergyKafkaApplication extends Application<EnergyKafkaConfiguration> {
+public class EnergyKafkaApplication extends Application<AppConfiguration> {
 
   public static void main(String[] args) throws Exception {
     new EnergyKafkaApplication().run(args);
   }
 
   @Override
-  public void run(EnergyKafkaConfiguration config, Environment environment) throws Exception {
+  public void run(AppConfiguration config, Environment environment) throws Exception {
     JdbiFactory factory = new JdbiFactory();
     Jdbi jdbi = factory.build(environment, config.getDataSourceFactory(), "postgresql");
 
-    EnergyEventStreamingService energyEventStreamingService = new EnergyEventStreamingService(config);
-    environment.lifecycle().manage(energyEventStreamingService);
+    DeviceEventKafkaProducer deviceEventKafkaProducer = new DeviceEventKafkaProducer(config);
+    environment.lifecycle().manage(deviceEventKafkaProducer);
 
     DeviceDAO deviceDAO = jdbi.onDemand(DeviceDAO.class);
-    DeviceController controller = new DeviceController(energyEventStreamingService, deviceDAO);
+    DeviceController controller = new DeviceController(config.getBigMessageSize(), deviceEventKafkaProducer, deviceDAO);
     environment.jersey().register(controller);
   }
 
   @Override
-  public void initialize(Bootstrap<EnergyKafkaConfiguration> bootstrap) {
-    bootstrap.addCommand(new LoadDeviceEventsCommand(this));
+  public void initialize(Bootstrap<AppConfiguration> bootstrap) {
+    bootstrap.addCommand(new RawDeviceEventsToCanonicalEventsCommand(this));
+    bootstrap.addCommand(new DeviceEventToDatabaseCommand(this));
   }
 
   @Override

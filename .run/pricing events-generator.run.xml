@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="pricing events-generator" type="JarApplication">
+    <option name="JAR_PATH" value="$PROJECT_DIR$/event-generators/target/event-generators-1.2-SNAPSHOT-jar-with-dependencies.jar" />
+    <option name="PROGRAM_PARAMETERS" value="events --target http://localhost:8080/events -e 1000 -n 5000" />
+    <option name="WORKING_DIRECTORY" value="C:\Users\fruch\Documents\LiveProject\manning-energy-resources" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2" />
+  </configuration>
+</component>

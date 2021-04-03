@@ -12,3 +12,49 @@ spec:
   partitions: 8
   replicas: 1
   topicName: tracking.energy.rawevent
+---
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaTopic
+metadata:
+  labels:
+    strimzi.io/cluster: my-cluster
+  name: tracking-energy-rawevent-slow
+  namespace: kafka
+spec:
+  config:
+    cleanup.policy: delete
+    compression.type: producer
+  partitions: 8
+  replicas: 1
+  topicName: tracking.energy.rawevent.slow
+---
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaTopic
+metadata:
+  labels:
+    strimzi.io/cluster: my-cluster
+  name: tracking-energy-deviceevent
+  namespace: kafka
+spec:
+  config:
+    cleanup.policy: delete
+    compression.type: producer
+  partitions: 8
+  replicas: 1
+  topicName: tracking.energy.deviceevent
+
+---
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaTopic
+metadata:
+  labels:
+    strimzi.io/cluster: my-cluster
+  name: tracking-energy-invalid
+  namespace: kafka
+spec:
+  config:
+    cleanup.policy: delete
+    compression.type: producer
+  partitions: 3
+  replicas: 1
+  topicName: tracking.energy.invalid
