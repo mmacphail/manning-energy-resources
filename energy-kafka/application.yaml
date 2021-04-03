@@ -1,0 +1,11 @@
+kafkaRawEnergyEventTopicName: tracking.energy.rawevent
+kafkaBootstrapServer: docker-desktop:32234
+kafkaSchemaRegistryUrl: http://schema-registry.cluster.local
+
+database:
+  driverClass: org.postgresql.Driver
+  user: postgres
+  password: ABRzargFdu
+  url: jdbc:postgresql://docker-desktop:30032/postgres
+
+  validationQuery: "/* MyService Health Check */ SELECT 1"

@@ -1,0 +1,1 @@
+ kafka-consumer-groups $SERVER --topic tracking.energy.rawevent --group charging-command --reset-offsets --to-earliest --execute

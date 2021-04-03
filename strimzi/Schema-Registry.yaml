@@ -1,0 +1,62 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-registry
+  namespace: kafka
+spec:
+  selector:
+    matchLabels:
+      app: "my-registry"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: my-registry
+    spec:
+      containers:
+        - name: cp-registry-container
+          image: confluentinc/cp-schema-registry:6.0.0
+          env:
+            - name: SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS
+              value: my-cluster-kafka-bootstrap:9092
+            - name: SCHEMA_REGISTRY_HOST_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          ports:
+            - containerPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: schema-registry-service
+  namespace: kafka
+spec:
+  ports:
+    - port: 8081
+  clusterIP: None
+  selector:
+    app: my-registry
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: schema-registry-ingress
+  namespace: kafka
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+    - host: schema-registry.cluster.local
+      http:
+        paths:
+          - path: /?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: schema-registry-service
+                port:
+                  number: 8081
