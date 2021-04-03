@@ -5,7 +5,6 @@ import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 public interface DeviceDAO {
 

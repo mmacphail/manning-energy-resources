@@ -25,7 +25,6 @@ import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicLong;
 
 public class LoadDeviceEventsCommand extends EnvironmentCommand<EnergyKafkaConfiguration> {
     public LoadDeviceEventsCommand(Application<EnergyKafkaConfiguration> application) {

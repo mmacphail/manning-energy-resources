@@ -1,7 +1,8 @@
 package eu.macphail.energy;
 
+import eu.macphail.energy.device.DeviceDAO;
 import eu.macphail.energy.device.LoadDeviceEventsCommand;
-import eu.macphail.energy.device.DeviceEventController;
+import eu.macphail.energy.device.DeviceController;
 import eu.macphail.energy.device.EnergyEventStreamingService;
 import io.dropwizard.Application;
 import io.dropwizard.jdbi3.JdbiFactory;
@@ -23,7 +24,8 @@ public class EnergyKafkaApplication extends Application<EnergyKafkaConfiguration
     EnergyEventStreamingService energyEventStreamingService = new EnergyEventStreamingService(config);
     environment.lifecycle().manage(energyEventStreamingService);
 
-    DeviceEventController controller = new DeviceEventController(energyEventStreamingService);
+    DeviceDAO deviceDAO = jdbi.onDemand(DeviceDAO.class);
+    DeviceController controller = new DeviceController(energyEventStreamingService, deviceDAO);
     environment.jersey().register(controller);
   }
 
